@@ -26,5 +26,16 @@ namespace M2L_Asso.Controllers
 
             return View();
         }
+
+
+        public ActionResult Valres()
+        {
+            return View();
+        }
+
+        public ActionResult Fredi()
+        {
+            return View();
+        }
     }
 }
