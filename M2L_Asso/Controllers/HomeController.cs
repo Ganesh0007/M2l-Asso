@@ -50,7 +50,7 @@ namespace M2L_Asso.Controllers
                     var credential = new NetworkCredential
                     {
                         UserName = "ganesh.radje@outlook.fr",  // replace with valid value
-                        Password = "466OKR"  // replace with valid value
+                        Password = ""  // replace with valid value
                     };
                     smtp.Credentials = credential;
                     smtp.Host = "smtp-mail.outlook.com";
