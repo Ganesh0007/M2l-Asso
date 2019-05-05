@@ -38,27 +38,41 @@ namespace M2L_Asso.Controllers
         {
             if (ModelState.IsValid)
             {
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                var message = new System.Net.Mail.MailMessage();
-                message.To.Add(new MailAddress("ganesh.radje@ynov.com"));  // replace with valid value 
-                message.From = new MailAddress("radjeganesh@hotmail.fr");  // replace with valid value
-                message.Subject = "Your email subject";
-                message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
-                message.IsBodyHtml = true;
-
-                using (var smtp = new SmtpClient())
+                try
                 {
-                    var credential = new NetworkCredential
+
+
+                    Email e = new Email();
+                    var fromE = e.FromEmail;
+                    BDD b = new BDD();
+                    var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                    var message = new System.Net.Mail.MailMessage();
+
+                    message.From = new MailAddress(fromE);  // replace with valid value
+                    message.To.Add(new MailAddress("contact@m2l-asso.fr"));  // replace with valid value 
+                    message.Subject = "Your email subject";
+                    message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
+                    message.IsBodyHtml = true;
+
+                    using (var smtp = new SmtpClient())
                     {
-                        UserName = "ganesh.radje@outlook.fr",  // replace with valid value
-                        Password = ""  // replace with valid value
-                    };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp-mail.outlook.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    await smtp.SendMailAsync(message);
-                    return RedirectToAction("Sent");
+                        var credential = new NetworkCredential
+                        {
+                            UserName = "contact@m2l-asso.fr",  // replace with valid value
+                            Password = b.PassMail()  // replace with valid value
+                        };
+                        smtp.Credentials = credential;
+                        smtp.Host = "smtp.ionos.fr";
+                        smtp.Port = 587;
+                        smtp.EnableSsl = false;
+                        await smtp.SendMailAsync(message);
+                        return RedirectToAction("Sent");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var msgEx = ex.Message;
+                    return RedirectToAction("SentNOK");
                 }
             }
             return View(model);
@@ -80,7 +94,7 @@ namespace M2L_Asso.Controllers
 
         public FileStreamResult GetPDF()
         {
-            FileStream fs = new FileStream(Server.MapPath(@"~\Views\Home\Contexte-M2L-FREDI.pdf"), FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(Server.MapPath(@"~\Views\Home\fredi.pdf"), FileMode.Open, FileAccess.Read);
             return File(fs, "application/pdf");
         }
 

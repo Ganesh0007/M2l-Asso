@@ -124,6 +124,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BDD.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,6 +151,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Home\Flux.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -169,7 +171,6 @@
     <Content Include="Views\Home\Valres.cshtml" />
     <Content Include="Views\Home\Fredi.cshtml" />
     <Content Include="Views\Home\Sent.cshtml" />
-    <Content Include="Views\Home\Contexte-M2L-FREDI.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
