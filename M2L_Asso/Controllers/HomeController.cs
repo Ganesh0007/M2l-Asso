@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -76,5 +77,12 @@ namespace M2L_Asso.Controllers
         {
             return View();
         }
+
+        public FileStreamResult GetPDF()
+        {
+            FileStream fs = new FileStream(Server.MapPath(@"~\Views\Home\Contexte-M2L-FREDI.pdf"), FileMode.Open, FileAccess.Read);
+            return File(fs, "application/pdf");
+        }
+
     }
 }

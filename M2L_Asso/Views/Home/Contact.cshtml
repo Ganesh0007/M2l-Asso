@@ -19,14 +19,14 @@
 
 @model M2L_Asso.Models.Email
 @{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contactez-nous !";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <h4>Send your comments.</h4>
+    <h4>Envoyer vos remarques et vos questions 📧  </h4>
     <hr />
     <div class="form-group">
         @Html.LabelFor(m => m.FromName, new { @class = "col-md-2 control-label" })

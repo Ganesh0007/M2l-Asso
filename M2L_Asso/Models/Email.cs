@@ -8,9 +8,9 @@ namespace M2L_Asso.Models
 {
     public class Email
     {
-        [Required, Display(Name = "Your name")]
+        [Required, Display(Name = "Votre Nom")]
         public string FromName { get; set; }
-        [Required, Display(Name = "Your email"), EmailAddress]
+        [Required, Display(Name = "Votre Mail"), EmailAddress]
         public string FromEmail { get; set; }
         [Required]
         public string Message { get; set; }
